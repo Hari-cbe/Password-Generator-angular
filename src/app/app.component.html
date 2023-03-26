@@ -1,0 +1,31 @@
+<div class="container text-center">
+  <h1 class="fs-2 fw-bold font-monospace text-uppercase">Password Generator</h1>
+  <div class="d-flex flex-row justify-content-center p-2">
+    <label class="mt-5 mr-3 mb-4">Length of the Password</label>
+    <input class="shadow-lg rounded " (input)="onChangeInput($event)" />
+  </div>
+
+  <div class="d-flex justify-content-center m-5 p-2 gap-4">
+    <div>
+      <label class="fs-5 mr-4">Use Numbers</label>
+      <input (change)="onChangeNumbers()" type="checkbox" />
+    </div>
+    <div>
+      <label class="fs-5 mr-4">Use Characters</label>
+      <input (change)="onChangeLetters()" type="checkbox" />
+    </div>
+    <div>
+      <label class="fs-5 mr-4">Use Symbols</label>
+      <input (change)="onChangeSymbols()" type="checkbox" />
+    </div>
+  </div>
+  <button class="btn btn-outline-primary mb-5"
+    [disabled]="!(letter && (includeLetters || includeNumbers || includeSymbols))" (click)="onButtonClick()">
+    Generate !
+  </button>
+
+  <div *ngIf="password">
+    <label class="mr-5">Your Password</label>
+    <input [value]="password" />
+  </div>
+</div>
